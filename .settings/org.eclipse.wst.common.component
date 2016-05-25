@@ -5,6 +5,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="java-output-path" value="/restaurant/target/classes"/>
-        <property name="context-root" value="restaurant-auto"/>
+        <property name="context-root" value="restaurant"/>
     </wb-module>
 </project-modules>

@@ -3,6 +3,7 @@ package edu.nankai.cs.restaurant.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Category {
 	public void setCategoryId(long categoryId) {
 		this.categoryId = categoryId;
 	}
-	@NotBlank
+	@Column(unique=true,nullable=false)
 	public String getCategoryName() {
 		return categoryName;
 	}
@@ -46,7 +47,6 @@ public class Category {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (categoryId ^ (categoryId >>> 32));
 		result = prime * result + ((categoryName == null) ? 0 : categoryName.hashCode());
 		return result;
 	}
@@ -59,8 +59,6 @@ public class Category {
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
-		if (categoryId != other.categoryId)
-			return false;
 		if (categoryName == null) {
 			if (other.categoryName != null)
 				return false;

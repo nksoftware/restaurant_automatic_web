@@ -253,3 +253,8 @@ NOMAXVALUE
 INCREMENT BY 1 
 START WITH 1 
 NOCACHE;
+
+--对personnel表进行修改，完成登录功能
+alter table nkcs_personnel add login_name varchar2(64) not null unique;
+alter table nkcs_personnel add password varchar2(255) not null;
+alter table nkcs_personnel add salt varchar2(64) not null;

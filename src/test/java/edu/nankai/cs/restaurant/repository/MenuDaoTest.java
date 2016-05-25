@@ -37,4 +37,10 @@ public class MenuDaoTest extends SpringTransactionalTestCase{
 		}
 		
 	}
+	
+	@Test
+	public void getMenu(){
+		Menu menu = menuDao.findByDishName("红烧鱼");
+		System.out.println(menu);
+	}
 }

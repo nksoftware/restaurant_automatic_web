@@ -1,5 +1,7 @@
 package edu.nankai.cs.restaurant.repository;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -33,6 +35,18 @@ public class OrderItemDaoTest extends SpringTransactionalTestCase {
 		orderItem.setPk(new OrderItem.PK(order,menu));
 		
 		orderItemDao.save(orderItem);
+	}
+	
+	@Test
+	public void getUnfinished(){
+		List<OrderItem> orderItems = orderItemDao.findByStatusIsPreparing();
+		System.out.println(orderItems.size());
+	}
+	
+	@Test
+	public void getCooking(){
+		List<OrderItem> orderItems = orderItemDao.findByStatusIsCooking();
+		System.out.println(orderItems.size());
 	}
 	
 }

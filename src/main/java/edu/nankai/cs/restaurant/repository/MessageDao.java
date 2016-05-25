@@ -9,6 +9,11 @@ import edu.nankai.cs.restaurant.entity.Message;
 
 public interface MessageDao extends PagingAndSortingRepository<Message, Long> {
 	@Query(value="select m from Message m where to_char(m.messageDate,'yyyy-mm-dd') = ?1" )
-	public List<Message> findByMessageDate(String date);
+	List<Message> findByMessageDate(String date);
+	
+	@Query("select m from Message m where m.messageType = ?1" )
+	List<Message> findByType(String type);
+	
+	Long countByMessageType(String type);
 	
 }

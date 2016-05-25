@@ -16,6 +16,8 @@ import javax.persistence.SequenceGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @javax.persistence.Table(name = "nkcs_table")
 public class Table implements Serializable {
@@ -35,7 +37,6 @@ public class Table implements Serializable {
 	public void setTableId(Long tableId) {
 		this.tableId = tableId;
 	}
-	@NotBlank
 	public String getStatus() {
 		return status;
 	}

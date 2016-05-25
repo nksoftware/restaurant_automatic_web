@@ -12,23 +12,25 @@
 	</bean>
 
 	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
-	<bean id="shiroDbRealm" class="edu.nankai.cs.restaurant.service.account.ShiroDbRealm">
-		<property name="accountService" ref="accountService"/>
+	<bean id="shiroDbRealm" class="edu.nankai.cs.restaurant.service.personnel.ShiroDbRealm">
+		<property name="personnelService" ref="personnelService"></property>
 	</bean>
 	
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/login" />
-		<property name="successUrl" value="/" />
+		<property name="successUrl" value="/"/>
 		<property name="filterChainDefinitions">
 			<value>
 				/login = authc
 				/logout = logout
 				/static/** = anon
-				/api/** = anon
+				/images/** = anon
 				/register/** = anon
 				/admin/** = roles[admin]
+				/manager/** = roles[manager]
+				/customer/** = anon
 				/** = user
 			</value>
 		</property>
@@ -36,7 +38,7 @@
 	
 	<!-- 用户授权信息Cache, 采用EhCache -->
 	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-		<property name="cacheManagerConfigFile" value="classpath:ehcache/ehcache-shiro.xml"/>
+		<property name="cacheManagerConfigFile" value="classpath:security/ehcache-shiro.xml"/>
 	</bean>
 	
 	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->

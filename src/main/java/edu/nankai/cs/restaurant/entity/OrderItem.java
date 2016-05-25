@@ -38,7 +38,6 @@ public class OrderItem {
 		this.quantity = quantity;
 	}
 
-	@NotBlank
 	public String getStatus() {
 		return status;
 	}

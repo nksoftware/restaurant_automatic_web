@@ -23,7 +23,6 @@ public class TableDaoTest extends SpringTransactionalTestCase{
 	public void addTable(){
 		Table t = new Table();
 		t.setPeopleNumber(10);
-		t.setStatus("free");
 		
 		Location loc = new Location();
 		loc.setFloor(1);
@@ -44,6 +43,12 @@ public class TableDaoTest extends SpringTransactionalTestCase{
 		for(Reservation r : reservations){
 			System.out.println(r);
 		}
+	}
+	
+	@Test
+	public void getAll(){
+		List<Table> tables = (List<Table>) tableDao.findByOrderByTableIdAsc();
+		System.out.println(tables);
 	}
 	
 	
